@@ -1,0 +1,89 @@
+; MultiLogicEA v1.00 — EURUSD
+; Portierung des Pine-Script "Multi-Logic Trend, Momentum & Breakout System"
+; Empfohlener Timeframe: M15 oder H1
+; ================================================
+
+[Parameters]
+; --- 1. Marktstruktur & Trend
+FastEmaLength=20
+MidEmaLength=50
+SlowEmaLength=200
+RangeLength=30
+RangeThresholdPct=5.0
+
+; --- 2. Higher-Timeframe Filter
+UseHtfFilter=true
+HtfTimeframe=16385
+HtfEmaLength=50
+
+; --- 3. VWAP Filter
+UseVwapFilter=true
+
+; --- 4. Entry Logik
+RsiLength=14
+MacdFastLength=12
+MacdSlowLength=26
+MacdSignalLength=9
+BbLength=20
+BbDeviation=2.0
+MinimumConfluence=4
+EnableTrendLogic=true
+EnableMomentumLogic=true
+EnableBreakoutLogic=true
+BreakoutAtrBuffer=0.15
+BreakoutMinClosePosition=0.60
+RequireVolumeForBreakout=true
+EnableMeanReversion=false
+MinRangeAtrRatio=1.0
+ReversionWickRatio=0.35
+RequireRsiTurnForReversion=true
+
+; --- 5. Volumen-Bestaetigung
+UseVolumeFilter=true
+VolumeMaLength=20
+VolumeMultiplier=1.5
+ObvMaLength=14
+
+; --- 6. Stop-Loss & Target
+AtrLength=14
+StopMethod=0
+TargetMethod=0
+SwingLookback=10
+StructureAtrBuffer=0.20
+StopAtrMultiplier=1.5
+TargetAtrMultiplier=2.5
+FixedStopPct=2.5
+FixedTargetPct=5.0
+RiskRewardRatio=1.5
+
+; --- 7. Signal-Steuerung
+CooldownBars=5
+FreshSetupOnly=true
+RequireExitBeforeNextSignal=true
+AllowOppositeSignal=true
+
+; --- 8. Risiko & Positionsgroesse
+RiskPercent=0.5
+RiskOnFixedBal=true
+FixedBalanceRef=50000
+MaxLotsPerTrade=1.0
+
+; --- 9. Handelszeiten & Schutz
+UseSessionFilter=false
+SessionStartHour=7
+SessionEndHour=20
+TradeMonday=true
+TradeTuesday=true
+TradeWednesday=true
+TradeThursday=true
+TradeFriday=true
+FridayCloseHour=20
+EnableEquityGuard=false
+MaxDailyLossPercent=4.0
+MaxTotalDrawdown=8.0
+
+; --- 10. Sonstiges
+MagicNumber=40001
+EAComment=MultiLogicEA_EURUSD
+EnableTradeLog=true
+EnableAlerts=false
